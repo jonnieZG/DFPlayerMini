@@ -60,3 +60,52 @@ power, the voltage drop will cause erratic behavior, when the source voltage is 
 Therefore, ensure a **stable power source** and **keep the contact resistance as low as possible** if the power leads are not soldered
 to the module.
 
+------------------------
+
+## Library Reference
+
+### `DFPlayerMini` class
+
+- `DFPlayerMini::DFPlayerMini()` - Constructor.
+
+- `DFPlayerMini::~DFPlayerMini()` - Destructor.
+
+- `void` `DFPlayerMini::init(int pinBusy, int pinReceive, int pinTransmit, CallbackMethod whileBusyMethod = NULL)` -
+   Initializes the driver. 
+   `pinReceived` - input from player's TX;
+   `pinTransmit` - output to player's RX; 
+   `whileBusyMethod` - optional pointer to a method that will be kept called in wait cycles
+
+- `void` `DFPlayerMini::reset()` - Reset the module.
+
+- `void` `DFPlayerMini::playFile(int fileNumber, int folderNumber = 0)` - Play a specified file in specified folder number.
+   Folders are optional, and discouraged if you need a gapless play!
+
+- `bool` `DFPlayerMini::playFileplayFileAndWait(int fileNumber, int folderNumber = 0, int abortTriggerPin = 0, unsigned long timeout =
+	DFPLAYER_WAIT_TIMEOUT)` -
+   Play a specified file and wait for it to be completed. 
+   `folderNumber` - optional (see above);
+   `abortTriggerPin` - optional, specifies a pin connected to a button (active-low) that can be used to abort the waiting;
+	`timeout` - optional timeout (defaults to DFPLAYER_WAIT_TIMEOUT);
+   returns `true` if completed successfuly, or `false` if interrupted or failed
+   
+- `void` `DFPlayerMini::loopFile(byte fileNumber, int folderNumber = 0)` - Play a specified file in a loop. Non-blocking operation.
+
+- `void` `DFPlayerMini::loop()` - Enables or disables looping of the current sample.
+
+- `void` `DFPlayerMini::setVolume(int volume)` - Set the volume.
+
+- `void` `DFPlayerMini::stop()` - Stop playing any current sound.
+
+- `bool` `DFPlayerMini::isBusy()` - Returns `true` if a sound is currently being played (inverted state of the BUSY signal).
+
+- `bool` `DFPlayerMini::wait(int abortTriggerPin = 0, unsigned long timeout = DFPLAYER_WAIT_TIMEOUT)` - 
+   Wait for a `DONE` response. Internally used by `playFileAndWait`.
+
+
+
+------------------------
+
+## Version History
+
+* `1.0 (2017-02-17)`: Original release
