@@ -1,7 +1,7 @@
 # DFPlayerMini
 
 ## Overview
-This is a reliable, responsive driver for **`DFPlayer Mini (SKU:DFR0299)`** sound module for **`Arduino`** . It guarantees stability 
+This is a reliable, responsive driver for **`DFPlayer Mini`** sound module for **`Arduino`** . It guarantees stability 
 and responsiveness, due to respecting the two-way communication protocol with the module, taking care of required wait cycles, 
 and letting you do your own stuff while waiting.
 
@@ -115,10 +115,14 @@ leads are not soldered to the module.
 - `bool` `DFPlayerMini::wait(int abortTriggerPin = 0, unsigned long timeout = DFPLAYER_WAIT_TIMEOUT)` - 
    Wait for a `DONE` response. Internally used by `playFileAndWait`.
 
+------------------------
 
+## External References
+* [DFPlayer Module Documentation](https://www.dfrobot.com/wiki/index.php/DFPlayer_Mini_SKU:DFR0299)
 
 ------------------------
 
 ## Version History
 
 * `1.0 (2017-02-17)`: Original release
+
