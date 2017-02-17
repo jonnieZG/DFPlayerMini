@@ -70,7 +70,7 @@ According to the module specifications, it requires input voltage between 3.2V a
 contact resistance of power lines will be around 0.2 Ohm on each contact, and since the module can draw well above 0.5A at full 
 power, the voltage drop will cause erratic behavior, when the source voltage is not high enough.
 
-Therefore, ensure a **stable power source** and **keep the contact resistance as low as possible**, especiall in cases when power
+Therefore, ensure a **stable power source** and **keep the contact resistance as low as possible**, especially in cases when power
 leads are not soldered to the module.
 
 ------------------------
