@@ -11,7 +11,7 @@ to achieve great responsiveness.
 ## Using the Driver
 ### Non-Idle Waits
 The driver provides you with an optional callback method support, allowing you to do your own stuff while the driver is
-waiting for a timeout or performing a delay. This way you can achieve responsiveness of your system, near to the one achieved
+waiting for a timeout or performing a delay. This way you can achieve great responsiveness of your system, near to the one achieved
 with multi-threaded systems. 
 
 These operations should be used for detecting non-interrupt-backed events, or driving displays and/or other devices, as long as
@@ -20,7 +20,7 @@ you keep them **fast**! Do **not** attempt to call a DFPlayerMini driver method 
 ```C++
 // Do your time-critical stuff here - KEEP IT SHORT AND FAST!
 void readSensorsAndDoStuff() {
-   actionOneDetected = readSensorOneMagic();
+   actionDetected = readSensorMagic();
    updateDisplayMagic();
 }
 ...
@@ -39,14 +39,14 @@ player.playFileAndWait(MY_SOUND);
 All the sounds should be stored on a FAT formatted SD Card. The files can be organized in folders, sorted in a natural
 (sort-by-name) order. You address the file by its number (starting from 1) and its folder (also starting from 1).
 
-**However**, if you need to achieve a gapless play, you should write all the files to the root of the SD Card, rather than use
-folders. Furthermore, it might be a good idea to format the SD Card each time before copying the files, and to copy the
-file in their order of appearence. Using Windows' Copy/Paste will not guarantee you the proper order, so you might want
-to use the [SDCardRecorder Utility](https://github.com/jonnieZG/SDCardRecorder), a small utility written in Java, that will
-also generate `#define` entries for each sound.
+**However**, if you need to achieve a gapless play, you should use only **WAV format**, and write all the files to the **root** 
+of the SD Card, rather than using folders. Furthermore, it might be a good idea to **format the SD Card** each time before copying 
+the files, and to **copy the files in their order of appearence**. Using Windows' Copy/Paste will not guarantee you the proper order,
+so you might want to use the [SDCardRecorder Utility](https://github.com/jonnieZG/SDCardRecorder), a small utility written in Java,
+that will also generate `#define` entries for each sound.
 
 ### Supported Sound Formats
-The DFPlayerMini supports both WAV and MP3 formats. When using the WAV format, you should make sure to remove any metadata
+The DFPlayerMini supports both WAV and MP3 formats. When using WAV files, you should make sure to remove any metadata
 from the WAV file, since the player will interpret it as noise.
 
 I have found the MP3[44100 Hz, Mono, 32-bit float, VBR] and WAV[44100 Hz, Mono, 16-bit] to be working great, while MP3[22050 CBR]
