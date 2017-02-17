@@ -48,7 +48,7 @@ also generate `#define` entries for each sound.
 The DFPlayerMini supports both WAV and MP3 formats. When using the WAV format, you should make sure to remove any metadata
 from the WAV file, since the player will interpret it as noise.
 
-I have found the MP3[@44100 Hz, Mono, 32-bit float, VBR] and WAV[44100 Hz, Mono, 16-bit] to be working great, while MP3[@22050 CBR]
+I have found the MP3[44100 Hz, Mono, 32-bit float, VBR] and WAV[44100 Hz, Mono, 16-bit] to be working great, while MP3[22050 CBR]
 to cause erratic behavior in form of garbled response messages. So, if you notice that the module stars acting funky with certain
 sound files, turn on the DFPLAYER_DEBUG_HEAVY mode and see if the module is returning proper responses.
 
