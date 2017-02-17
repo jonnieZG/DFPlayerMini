@@ -8,7 +8,8 @@ and letting you do your own stuff while waiting.
 It does **not** require interrupts or multithreading, because if you use the `whileBusyMethod` callback wisely, you will be able
 to achieve great responsiveness.
 
-## Non-Idle Waits
+## Using the Driver
+### Non-Idle Waits
 The driver provides you with an optional callback method support, allowing you to do your own stuff while the driver is
 waiting for a timeout or performing a delay. This way you can achieve responsiveness of your system, near to the one achieved
 with multi-threaded systems. 
@@ -34,7 +35,7 @@ player.playFileAndWait(MY_SOUND);
 
 ```
 
-## Addressing a Sound and Achieving a Gapless Play
+### Addressing a Sound and Achieving a Gapless Play
 All the sounds should be stored on a FAT formatted SD Card. The files can be organized in folders, sorted in a natural
 (sort-by-name) order. You address the file by its number (starting from 1) and its folder (also starting from 1).
 
@@ -44,7 +45,7 @@ file in their order of appearence. Using Windows' Copy/Paste will not guarantee 
 to use the [SDCardRecorder Utility](https://github.com/jonnieZG/SDCardRecorder), a small utility written in Java, that will
 also generate `#define` entries for each sound.
 
-## Supported Sound Formats
+### Supported Sound Formats
 The DFPlayerMini supports both WAV and MP3 formats. When using the WAV format, you should make sure to remove any metadata
 from the WAV file, since the player will interpret it as noise.
 
@@ -52,13 +53,25 @@ I have found the MP3[44100 Hz, Mono, 32-bit float, VBR] and WAV[44100 Hz, Mono, 
 to cause erratic behavior in form of garbled response messages. So, if you notice that the module stars acting funky with certain
 sound files, turn on the DFPLAYER_DEBUG_HEAVY mode and see if the module is returning proper responses.
 
-## Powering the Module
+## Wiring the Module
+
+### Signal Pins
+The driver uses two-way communication with the module. Therefore, you must connect module's `RX` pin (2) with a `pinTransmit` on
+the microcontroller, and module's `TX` pin (3) with a `pinReceive` on the controller. 
+
+`BUSY` pin (16) on the module is optional, and is used only by the `isBusy()` method. If you plan to use the `BUSY` signal from
+the outside to figure out if a sample is currently being played, keep in mind that there is a non-derterministic delay between
+sending a play command, and the `BUSY` signal being actually activated. 
+
+For the `playAndWait` method, the driver waits for a `DFPLAYER_CODE_DONE` response, rather than reading the `BUSY` signal.
+
+### Powering the Module
 According to the module specifications, it requires input voltage between 3.2V and 5.0V. However, if you use a breadboard, the
 contact resistance of power lines will be around 0.2 Ohm on each contact, and since the module can draw well above 0.5A at full 
 power, the voltage drop will cause erratic behavior, when the source voltage is not high enough.
 
-Therefore, ensure a **stable power source** and **keep the contact resistance as low as possible** if the power leads are not soldered
-to the module.
+Therefore, ensure a **stable power source** and **keep the contact resistance as low as possible**, especiall in cases when power
+leads are not soldered to the module.
 
 ------------------------
 
