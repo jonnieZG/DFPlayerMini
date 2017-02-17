@@ -1,5 +1,5 @@
 /*
- * DFPlayerMini by JonnieZG - A reliable, responsive driver for DFPlayer Mini sound module for Arduino (SKU:DFR0299)
+ * DFPlayerMini by JonnieZG - A reliable, responsive driver for DFPlayer Mini sound module for Arduino
  *
  * - Requires both TX and RX pins to be connected, and optionally the BUSY pin (only if you plan to use isBusy() from outside).
  * - Supports optional input key for aborting playAndWait (active-low)
