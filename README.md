@@ -36,14 +36,16 @@ player.playFileAndWait(MY_SOUND);
 ```
 
 ### Addressing a Sound and Achieving a Gapless Play
-All the sounds should be stored on a FAT formatted SD Card. The files can be organized in folders, sorted in a natural
+All the sounds should be stored on a FAT formatted SD-card. The files can be organized in folders, sorted in a natural
 (sort-by-name) order. You address the file by its number (starting from 1) and its folder (also starting from 1).
 
-**However**, if you need to achieve a gapless play, you should use only **WAV format**, and write all the files to the **root** 
-of the SD Card, rather than using folders. Furthermore, it might be a good idea to **format the SD Card** each time before copying 
+However, if you need to achieve a **gapless play**, you should use only **WAV format**, and write all the files to the **root** 
+of the SD-card, rather than using folders. Furthermore, it might be a good idea to **format the SD-card** each time before copying 
 the files, and to **copy the files in their order of appearence**. Using Windows' Copy/Paste will not guarantee you the proper order,
 so you might want to use the [SDCardRecorder Utility](https://github.com/jonnieZG/SDCardRecorder), a small utility written in Java,
 that will also generate `#define` entries for each sound.
+
+If you did all as described, and there is still a pause between playing two files, then try with a **faster SD-card**.
 
 ### Supported Sound Formats
 The DFPlayerMini supports both WAV and MP3 formats. When using WAV files, you should make sure to remove any metadata
