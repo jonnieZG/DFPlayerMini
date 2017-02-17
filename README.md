@@ -91,7 +91,7 @@ to the module.
    
 - `void` `DFPlayerMini::loopFile(byte fileNumber, int folderNumber = 0)` - Play a specified file in a loop. Non-blocking operation.
 
-- `void` `DFPlayerMini::loop()` - Enables or disables looping of the current sample.
+- `void` `DFPlayerMini::loop(bool repeat = true)` - Enables or disables looping of the current sample.
 
 - `void` `DFPlayerMini::setVolume(int volume)` - Set the volume.
 
