@@ -44,7 +44,7 @@ file in their order of appearence. Using Windows' Copy/Paste will not guarantee 
 to use the [SDCardRecorder Utility](https://github.com/jonnieZG/SDCardRecorder), a small utility written in Java, that will
 also generate `#define` entries for each sound.
 
-## Supported Formats
+## Supported Sound Formats
 The DFPlayerMini supports both WAV and MP3 formats. When using the WAV format, you should make sure to remove any metadata
 from the WAV file, since the player will interpret it as noise.
 
@@ -56,4 +56,7 @@ sound files, turn on the DFPLAYER_DEBUG_HEAVY mode and see if the module is retu
 According to the module specifications, it requires input voltage between 3.2V and 5.0V. However, if you use a breadboard, the
 contact resistance of power lines will be around 0.2 Ohm on each contact, and since the module can draw well above 0.5A at full 
 power, the voltage drop will cause erratic behavior, when the source voltage is not high enough.
+
+Therefore, ensure a **stable power source** and **keep the contact resistance as low as possible** if the power leads are not soldered
+to the module.
 
