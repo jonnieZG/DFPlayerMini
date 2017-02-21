@@ -45,6 +45,10 @@ the files, and to **copy the files in their order of appearence**. Using Windows
 so you might want to use the [SDCardRecorder Utility](https://github.com/jonnieZG/SDCardRecorder), a small utility written in Java,
 that will also generate `#define` entries for each sound.
 
+The module requires some time to respond to a PLAY command, so if you rely just on `playAndWait` to achieve a gapless play, you might
+still notice a short gap. The only way to solve that issue with the DFPlayer Mini, is to use `play` combined with your own timing, and
+trigger the next sample slightly before the previous is done.
+
 If you did all as described, and there is still a pause between playing two files, then try with a **faster SD-card**.
 
 ### Supported Sound Formats
@@ -65,11 +69,11 @@ In cases where the Arduino is driven at 5V, you **must** put a 1k resistor betwe
 and `DX` must be connected to their counterparts on the Arduino **directly**, even if you drive the module at 5V! This is because the
 module *always* uses 3.3V levels for its signal lines.
 
-`BUSY` pin (16) on the module is optional, and is used only by the `isBusy()` method. If you plan to use the `BUSY` signal from
-the outside to figure out if a sample is currently being played, keep in mind that there is a non-derterministic delay between
-sending a play command, and the `BUSY` signal being actually activated. 
+`BUSY` pin (16) on the module is optional, and is used only by the `isBusy()` method. For the `playAndWait` method, the driver waits
+for a `DFPLAYER_CODE_DONE` response, instead of reading the `BUSY` signal.
 
-For the `playAndWait` method, the driver waits for a `DFPLAYER_CODE_DONE` response, rather than reading the `BUSY` signal.
+> **NOTE:** If you plan to use the `BUSY` signal from the outside to figure out if a sample is currently being played, keep in mind 
+> that there is a non-derterministic delay between sending a play command, and the `BUSY` signal being actually activated. 
 
 ### Powering the Module
 According to the module specifications, it requires input voltage between 3.2V and 5.0V. However, if you use a breadboard, the
