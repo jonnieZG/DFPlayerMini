@@ -59,7 +59,11 @@ sound files, turn on the DFPLAYER_DEBUG_HEAVY mode and see if the module is retu
 
 ### Signal Pins
 The driver uses two-way communication with the module. Therefore, you must connect module's `RX` pin (2) with a `pinTransmit` on
-the microcontroller, and module's `TX` pin (3) with a `pinReceive` on the controller. 
+the microcontroller, and module's `TX` pin (3) with a `pinReceive` on the controller.
+
+In cases where the Arduino is driven at 5V, you **must** put a 1k resistor between data-out on Arduino and `RX` of the player. `BUSY`
+and `DX` must be connected to their counterparts on the Arduino **directly**, even if you drive the module at 5V! This is because the
+module *always* uses 3.3V levels for its signal lines.
 
 `BUSY` pin (16) on the module is optional, and is used only by the `isBusy()` method. If you plan to use the `BUSY` signal from
 the outside to figure out if a sample is currently being played, keep in mind that there is a non-derterministic delay between
