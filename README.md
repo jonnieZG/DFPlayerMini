@@ -134,5 +134,5 @@ leads are not soldered to the module.
 
 ## Version History
 
-* `1.0 (2017-02-17)`: Original release
+* `1.0.0 (2017-02-17)`: Original release
 
