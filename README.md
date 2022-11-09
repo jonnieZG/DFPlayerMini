@@ -104,7 +104,7 @@ leads are not soldered to the module.
 - `void` `DFPlayerMini::playFile(int fileNumber, int folderNumber = 0)` - Play a specified file in specified folder number.
    Folders are optional, and discouraged if you need a gapless play!
 
-- `bool` `DFPlayerMini::playFileplayFileAndWait(int fileNumber, int folderNumber = 0, int abortTriggerPin = 0, unsigned long timeout =
+- `bool` `DFPlayerMini::playFileAndWait(int fileNumber, int folderNumber = 0, int abortTriggerPin = 0, unsigned long timeout =
 	DFPLAYER_WAIT_TIMEOUT)` -
    Play a specified file and wait for it to be completed. 
    `folderNumber` - optional (see above);
